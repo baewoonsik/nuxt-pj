@@ -11,6 +11,7 @@
                 <p>최대 풍속: {{ dataItem.maxWs }}</p>
             </li>
         </ul>
+        <ApexCharts />
     </div>
 </template>
 
@@ -24,7 +25,7 @@ const store = useWeatherStore();
 const data = computed(() => store.weatherData);
 
 onMounted(() => {
-    store.fetchWeatherData('20211001', '20211031', '108')
+    store.fetchWeatherData('20230401', '20230407', '108')
 });
 
 </script>

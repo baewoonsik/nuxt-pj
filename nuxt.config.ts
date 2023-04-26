@@ -4,5 +4,8 @@ import { mode } from "process";
 export default defineNuxtConfig({
   css: ["bootstrap/dist/css/bootstrap.min.css"],
   modules: ["@pinia/nuxt"],
-  plugins: ["~/plugins/apexcharts.client.ts"],
+  plugins: [
+    { src: "~/plugins/apexcharts.client.ts", mode: "client", ssr: false },
+  ],
+  components: true,
 });

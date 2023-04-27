@@ -1,3 +1,3 @@
 <template>
-    <h1>footer</h1>
+    <h1>Do Learn Nuxt3</h1>
 </template>

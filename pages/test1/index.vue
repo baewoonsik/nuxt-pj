@@ -1,17 +1,9 @@
 <template>
-    <div style="width: 100%; height: 100%;">
-        <h1>Weather</h1>
-        <ul>
-            <li v-for="(dataItem, index) in data" :key="index">
-                <p>지점명: {{ dataItem.stnNm }}</p>
-                <p>일시: {{ dataItem.tm }}</p>
-                <p>평균기온: {{ dataItem.avgTa }}</p>
-                <p>평균 상대습도: {{ dataItem.avgRhm }}</p>
-                <p>일강수량: {{ dataItem.sumRn }}</p>
-                <p>최대 풍속: {{ dataItem.maxWs }}</p>
-            </li>
-        </ul>
-        <ApexCharts />
+    <div v-if="isLoaded" style="width: 100%; height: 100%;">
+        <TemperatureChart :categories="categories" :data="chartData" />
+    </div>
+    <div v-else>
+        <h1>Loading...</h1>
     </div>
 </template>
 
@@ -22,10 +14,26 @@ import { computed, onMounted } from 'vue';
 
 const store = useWeatherStore();
 
-const data = computed(() => store.weatherData);
+const categories = computed(() => store.weatherData.map((item) => item.tm));
+
+const chartData = computed(() => [
+    {
+        name: "High Temperature",
+        data: store.weatherData.map((item) => item.maxTa),
+    },
+    {
+        name: "Low Temperature",
+        data: store.weatherData.map((item) => item.minTa),
+    },
+]);
+
+const isLoaded = computed(() => store.weatherData.length > 0);
+
+
+
 
 onMounted(() => {
-    store.fetchWeatherData('20230401', '20230407', '108')
+    store.fetchWeatherData('20230401', '20230410', '108')
 });
 
 </script>

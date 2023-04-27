@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <NuxtLink to="/test1" class="nav-link">Test1</NuxtLink>
+                    <NuxtLink to="/test1" class="nav-link">Temperature</NuxtLink>
                 </li>
                 <li class="nav-item">
-                    <NuxtLink to="/test2" class="nav-link">Test2</NuxtLink>
+                    <NuxtLink to="/test2" class="nav-link">Wind Speed</NuxtLink>
                 </li>
                 <li class="nav-item">
                     <NuxtLink to="/test3" class="nav-link">Test3</NuxtLink>
